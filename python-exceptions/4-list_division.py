@@ -7,6 +7,9 @@ def list_division(my_list_1, my_list_2, list_length):
             value_2 = my_list_2[i]
             result = 0
             try:
+                if isinstance(value_1, str) or isinstance(value_1, str):
+                    new_list.append(0)
+                    raise Exception
                 value_1 = float(value_1)
                 value_2 = float(value_2)
                 try:
