@@ -23,6 +23,7 @@ def list_division(my_list_1, my_list_2, list_length):
     except Exception:
         while len(new_list) != list_length:
             new_list.append(0)
-        print("out of range")
+            if len(new_list) == list_length:
+                print("out of range")
     finally:
         return new_list
