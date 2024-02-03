@@ -1,4 +1,12 @@
 #!/usr/bin/python3
+
+"""
+    The 0. Integers addition Module
+
+    This module contains add_integer function
+"""
+
+
 def add_integer(a, b=98):
     """
     Simple Algorithm that adds two integer and return sum
