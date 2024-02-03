@@ -2,15 +2,8 @@
 The ``0. Integers addition`` module
 ===================================
 
-
-
-This is an example text file. First import ``add_integer``:
-===========================================================
 >>> add_integer = __import__('0-add_integer').add_integer
 
-
-Test case: 4 regular case that return normal output:
-====================================================
 >>> add_integer(1, 2)
 3
 
@@ -23,9 +16,6 @@ Test case: 4 regular case that return normal output:
 >>> add_integer(6, -3)
 3
 
-
-Test case: 5 case that trigger exceptions:
-==========================================
 >>> add_integer("salam", 1)
 Traceback (most recent call last):
 	...
