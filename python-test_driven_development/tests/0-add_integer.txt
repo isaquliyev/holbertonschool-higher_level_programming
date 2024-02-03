@@ -3,6 +3,10 @@
 3
 >>> add_integer(1)
 99
+>>> add_integer(3.2, 2)
+5
+>>> add_integer(6, -3)
+3
 >>> add_integer("salam", 1)
 Traceback (most recent call last):
 	...
@@ -11,3 +15,12 @@ TypeError: a must be an integer
 Traceback (most recent call last):
         ...
 TypeError: b must be an integer
+>>> add_integer(3, float('inf'))
+Traceback (most recent call last):
+    ...
+OverflowError: cannot convert float infinity to integer
+
+>>> add_integer(3, float('NaN'))
+Traceback (most recent call last):
+    ...
+ValueError: cannot convert float NaN to integer
