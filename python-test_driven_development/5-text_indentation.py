@@ -15,11 +15,9 @@ def text_indentation(text):
     single_sentence = ""
     for letter in text:
         single_sentence += letter
-        if (letter == "." or
-            letter == "?" or
-            letter == ":"):
-               text_list.append(single_sentence)
-               single_sentence = ""
+        if letter == "." or letter == "?" or letter == ":":
+            text_list.append(single_sentence)
+            single_sentence = ""
     text_list.append(single_sentence)
     edited_list = []
     for txt in text_list:
