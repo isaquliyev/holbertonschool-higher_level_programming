@@ -12,4 +12,5 @@ def write_file(filename="", text=""):
     """
     with open(filename, "w", encoding="utf-8") as f:
         count = f.write(text)
+    f.close()
     return count
