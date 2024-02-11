@@ -142,3 +142,12 @@ class Rectangle(Base):
                 self.y = kwargs['y']
             except Exception:
                 pass
+
+    def to_dictionary(self):
+        new_dict = {
+                'id': self.id,
+                'width': self.width,
+                'height': self.height,
+                'x': self.x,
+                'y': self.y}
+        return new_dict
