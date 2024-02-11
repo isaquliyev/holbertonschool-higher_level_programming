@@ -107,16 +107,38 @@ class Rectangle(Base):
                    self.__width, self.__height)
         return result
 
-    def update(self, *args):
+    def update(self, *args, **kwargs):
         """
             Function that assigns an
             argument to each attribute
         """
-        try:
-            self.id = args[0]
-            self.width = args[1]
-            self.height = args[2]
-            self.x = args[3]
-            self.y = args[4]
-        except Exception:
-            pass
+        if args:
+            try:
+                self.id = args[0]
+                self.width = args[1]
+                self.height = args[2]
+                self.x = args[3]
+                self.y = args[4]
+            except Exception:
+                pass
+        else:
+            try:
+                self.id = kwargs['id']
+            except Exception:
+                pass
+            try:
+                self.width = kwargs['width']
+            except Exception:
+                pass
+            try:
+                self.height = kwargs['height']
+            except Exception:
+                pass
+            try:
+                self.x = kwargs['x']
+            except Exception:
+                pass
+            try:
+                self.y = kwargs['y']
+            except Exception:
+                pass
