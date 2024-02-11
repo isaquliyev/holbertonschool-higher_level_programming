@@ -67,3 +67,15 @@ class Square(Rectangle):
                 self.y = kwargs['y']
             except Exception:
                 pass
+
+    def to_dictionary(self):
+        """
+            Function that returns the dictionary
+            representation of a Square
+        """
+        new_dict = {
+                'id': self.id,
+                'size': self.width,
+                'x': self.x,
+                'y': self.y}
+        return new_dict
