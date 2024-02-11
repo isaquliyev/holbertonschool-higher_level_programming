@@ -144,6 +144,10 @@ class Rectangle(Base):
                 pass
 
     def to_dictionary(self):
+        """
+            Function that returns the dictionary
+            representation of a Rectangle
+        """
         new_dict = {
                 'id': self.id,
                 'width': self.width,
