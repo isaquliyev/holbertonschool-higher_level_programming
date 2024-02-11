@@ -3,6 +3,8 @@
 """
     The ``2. First Rectangle`` module
 """
+
+
 from models.base import Base
 
 
@@ -23,6 +25,9 @@ class Rectangle(Base):
 
     @width.setter
     def width(self, value):
+        """
+            Set the value for width
+        """
         self.validator("width", value)
         self.__width = value
 
@@ -32,6 +37,9 @@ class Rectangle(Base):
 
     @height.setter
     def height(self, value):
+        """
+            Set the value for height
+        """
         self.validator("height", value)
         self.__height = value
 
@@ -41,6 +49,9 @@ class Rectangle(Base):
 
     @x.setter
     def x(self, value):
+        """
+            Set the value for x
+        """
         self.validator("x", value, True)
         self.__x = value
 
@@ -50,6 +61,9 @@ class Rectangle(Base):
 
     @y.setter
     def y(self, value):
+        """
+            Set the value for y
+        """
         self.validator("y", value, True)
         self.__y = value
 
@@ -57,7 +71,7 @@ class Rectangle(Base):
         """
             Checks the value valid or not
         """
-        if type(value) != int:
+        if type(value) is not int:
             raise TypeError("{} must be an integer".format(attribute_name))
         if not can_be_zero and value <= 0:
             raise ValueError("{} must be > 0".format(attribute_name))
