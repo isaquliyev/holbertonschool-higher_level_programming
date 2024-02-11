@@ -26,6 +26,8 @@ class Square(Rectangle):
             Set the side size of Square
         """
         self.__size = value
+        self.width = value
+        self.height = value
 
     def __str__(self):
         result = "[Square] ({}) {}/{} - {}".\
