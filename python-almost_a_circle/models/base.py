@@ -53,3 +53,21 @@ class Base:
         with open("{}.json".format(cls.__name__), "w", encoding="utf-8") as f:
             f.write(cls.to_json_string(list_dictionaries))
         f.close()
+
+    @classmethod
+    def create(cls, **dictionary):
+        """
+            Function that returns an instance with all
+            attributes already set
+        """
+        from models.rectangle import Rectangle
+        from models.square import Square
+        if cls is Square:
+            new_instance = Square(3)
+        if cls is Rectangle:
+            new_instance = Rectangle(3, 5)
+        try:
+            new_instance.update(**dictionary)
+        except Exception:
+            pass
+        return new_instance
