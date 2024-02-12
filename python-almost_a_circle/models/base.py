@@ -71,3 +71,25 @@ class Base:
         except Exception:
             pass
         return new_instance
+
+    @classmethod
+    def load_from_file(cls):
+        """
+            Function that returns a list of instances
+        """
+        new_list = []
+        try:
+            with open("{}.json".format(cls.__name__),
+                      "r", encoding="utf-8") as f:
+                read_data = f.read()
+                list_json = cls.from_json_string(read_data)
+                try:
+                    for dictionary in list_json:
+                        new_list.append(cls.create(**dictionary))
+                except Exception:
+                    pass
+            f.close()
+        except Exception:
+            pass
+        finally:
+            return new_list
