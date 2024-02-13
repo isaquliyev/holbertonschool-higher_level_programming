@@ -13,23 +13,27 @@ from models.rectangle import Rectangle
 from io import StringIO
 
 
-class TestBase(unittest.TestCase):
+class TestRectangle(unittest.TestCase):
+    
+    def setUp(self):
+        """ Creating instances for testing """
+        self.r1 = Rectangle(1, 1)
+        self.r2 = Rectangle(1, 2, 3, 4, 5)
+        self.r3 = Rectangle(1, 1, 1, 1, 1)
+
+        self.new_dictionary = {"x": 1, "y": 1, "id": 1, "height": 1, "width": 1}
+
     def test_rectangle(self):
-        """
-            Creating instances and checking them
-        """
         # Only height and width initialization
-        r1 = Rectangle(1, 2)
-        self.assertEqual(r1.width, 1)
-        self.assertEqual(r1.height, 2)
+        self.assertEqual(self.r1.width, 1)
+        self.assertEqual(self.r1.height, 1)
 
         # Initalization of all attributes
-        r2 = Rectangle(1, 2, 3, 4, 5)
-        self.assertEqual(r2.width, 1)
-        self.assertEqual(r2.height, 2)
-        self.assertEqual(r2.x, 3)
-        self.assertEqual(r2.y, 4)
-        self.assertEqual(r2.id, 5)
+        self.assertEqual(self.r2.width, 1)
+        self.assertEqual(self.r2.height, 2)
+        self.assertEqual(self.r2.x, 3)
+        self.assertEqual(self.r2.y, 4)
+        self.assertEqual(self.r2.id, 5)
 
         # Type error cases
         with self.assertRaises(TypeError):
@@ -60,21 +64,29 @@ class TestBase(unittest.TestCase):
             Rectangle(10, 11, 12, -13)
 
         """ Area function testing """
-        r3 = Rectangle(1, 2)
-        self.assertEqual(r3.area(), 2)
+        self.assertEqual(self.r2.area(), 2)
 
         """ __str__ function testing """
-        r4 = Rectangle(3, 4, 5, 6, 7)
-        self.assertEqual(str(r4), "[Rectangle] (7) 5/6 - 3/4")
+        self.assertEqual(str(self.r2), "[Rectangle] (5) 3/4 - 1/2")
 
         """ Display Testing """
-        r5 = Rectangle(1, 1)
         output = "#\n"
         with patch("sys.stdout", new=StringIO()) as out:
-            r5.display()
+            self.r1.display()
             self.assertEqual(out.getvalue(), output)
-        r6 = Rectangle(1, 1, 1, 1, 1)
         output = "\n #\n"
+
         with patch("sys.stdout", new=StringIO()) as out:
-            r6.display()
+            self.r3.display()
             self.assertEqual(out.getvalue(), output)
+
+        """ Method testing: to_dictionary """
+        self.assertEqual(self.r2.to_dictionary(), {"id": 5, "width": 1, "height": 2, "x": 3, "y": 4})
+
+        """ Method testing: update """
+        self.r1.update(1, 2, 3, 4, 5)
+        self.assertEqual(str(self.r1), "[Rectangle] (1) 4/5 - 2/3")
+
+        """ Method testing: create """
+        new_instance = Rectangle.create(**self.new_dictionary)
+        self.assertEqual(str(new_instance), "[Rectangle] (1) 1/1 - 1/1")
