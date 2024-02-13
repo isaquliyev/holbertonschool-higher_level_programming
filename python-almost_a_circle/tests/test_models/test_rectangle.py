@@ -16,7 +16,7 @@ from io import StringIO
 class TestBase(unittest.TestCase):
     def test_rectangle(self):
         """
-            Function that creates instances and check it
+            Creating instances and checking them
         """
         # Only height and width initialization
         r1 = Rectangle(1, 2)
@@ -58,3 +58,18 @@ class TestBase(unittest.TestCase):
             Rectangle(7, 8, -9)
         with self.assertRaises(ValueError):
             Rectangle(10, 11, 12, -13)
+
+        """ Area function testing """
+        r3 = Rectangle(1, 2)
+        self.assertEqual(r3.area(), 2)
+
+        """ __str__ function testing """
+        r4 = Rectangle(3, 4, 5, 6, 7)
+        self.assertEqual(str(r4), "[Rectangle] (7) 5/6 - 3/4")
+
+        """ Display Testing """
+        r5 = Rectangle(1, 1)
+        output = "#\n"
+        with patch("sys.stdout", new=StringIO()) as out:
+            r5.display()
+            self.assertEqual(out.getvalue(), output)
