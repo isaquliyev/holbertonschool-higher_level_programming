@@ -66,3 +66,26 @@ class TestSquare(unittest.TestCase):
     def test_create(self):
         new_instance = Square.create(**self.new_dictionary)
         self.assertEqual(str(new_instance), "[Square] (1) 1/1 - 1")
+
+    """ Method testing: save_to_file"""
+    def test_save_to_file_case_1(self):
+        Square.save_to_file(None)
+        with open("Square.json", "r") as f:
+            self.assertEqual(f.read(), "[]")
+
+    def test_save_to_file_case_2(self):
+        Square.save_to_file([])
+        with open("Square.json", "r") as f:
+            self.assertEqual(f.read(), "[]")
+
+    def test_save_to_file_case_3(self):
+        Square.save_to_file([Square(1, id=1)])
+        with open("Square.json", "r") as f:
+            self.assertEqual(f.read(), '[{"id": 1, "size": 1, "x": 0, "y": 0}]')
+
+    def tearDown(self):
+        """ Method that execute before other methods. """
+        try:
+            os.remove("Rectangle.json")
+        except:
+            pass
