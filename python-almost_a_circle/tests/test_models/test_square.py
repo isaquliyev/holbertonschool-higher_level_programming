@@ -22,7 +22,26 @@ class TestSquare(unittest.TestCase):
 
     def test_square(self):
         self.assertEqual(self.s1.size, 1)
-
         self.assertEqual(self.s2.x, 2)
-
         self.assertEqual(self.s3.y, 3)
+
+        # Type Error cases
+        with self.assertRaises(TypeError):
+            Square()
+        with self.assertRaises(TypeError):
+            Square("1")
+        with self.assertRaises(TypeError):
+            Square(1, "2")
+        with self.assertRaises(TypeError):
+            Square(1, 2, "3")
+
+        # Value Error cases
+        with self.assertRaises(ValueError):
+            Square(-1)
+        with self.assertRaises(ValueError):
+            Square(1, -2)
+        with self.assertRaises(ValueError):
+            Square(1, 2, -3)
+        with self.assertRaises(ValueError):
+            Square(0)
+
