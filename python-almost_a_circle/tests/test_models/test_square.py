@@ -19,11 +19,13 @@ class TestSquare(unittest.TestCase):
         self.s1 = Square(1)
         self.s2 = Square(1, 2)
         self.s3 = Square(1, 2, 3)
+        self.s4 = Square(1, 2, 3, 4)
 
     def test_square(self):
         self.assertEqual(self.s1.size, 1)
         self.assertEqual(self.s2.x, 2)
         self.assertEqual(self.s3.y, 3)
+        self.assertEqual(self.s4.id, 4)
 
         # Type Error cases
         with self.assertRaises(TypeError):
@@ -45,3 +47,6 @@ class TestSquare(unittest.TestCase):
         with self.assertRaises(ValueError):
             Square(0)
 
+    """ Method testing: __str__ """
+    def test_str(self):
+        self.assertEqual(str(self.s4), "[Square] (4) 2/3 - 1")
