@@ -93,21 +93,21 @@ class TestRectangle(unittest.TestCase):
         new_instance = Rectangle.create(**self.new_dictionary)
         self.assertEqual(str(new_instance), "[Rectangle] (1) 1/1 - 1/1")
 
-        """ Method testing: save_to_file"""
-    def save_to_file_case_1(self):
+    """ Method testing: save_to_file"""
+    def test_save_to_file_case_1(self):
         Rectangle.save_to_file(None)
         with open("Rectangle.json", "r") as f:
             self.assertEqual(f.read(), "[]")
     
-    def save_to_file_case_2(self):
+    def test_save_to_file_case_2(self):
         Rectangle.save_to_file([])
         with open("Rectangle.json", "r") as f:
             self.assertEqual(f.read(), "[]")
 
-    def save_to_file_case_3(self):
-        Rectangle.save_to_file([Rectangle(1, 2, id=13)])
-        with open("Rectangle.json", "r") as file:
-            self.assertEqual(f.read(), '[{"id": 13, "width": 1, "height": 2, "x": 0, "y": 0}]')
+    def test_save_to_file_case_3(self):
+        Rectangle.save_to_file([Rectangle(1, 2, id=1)])
+        with open("Rectangle.json", "r") as f:
+            self.assertEqual(f.read(), '[{"id": 1, "width": 1, "height": 2, "x": 0, "y": 0}]')
 
     def tearDown(self):
         """ Method that execute before other methods. """
