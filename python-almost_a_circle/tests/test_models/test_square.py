@@ -22,6 +22,7 @@ class TestSquare(unittest.TestCase):
         self.s4 = Square(1, 2, 3, 4)
 
         self.new_dictionary = {"x": 1, "y": 1, "id": 1, "size": 1}
+        self.s1_list = [self.s1]
 
     def test_square(self):
         self.assertEqual(self.s1.size, 1)
@@ -83,9 +84,16 @@ class TestSquare(unittest.TestCase):
         with open("Square.json", "r") as f:
             self.assertEqual(f.read(), '[{"id": 1, "size": 1, "x": 0, "y": 0}]')
 
+    """ Method testing: load_from_file """
+    def test_load_from_file(self):
+        self.assertEqual(Square.load_from_file(), [])
+
+        Square.save_to_file(self.s1_list)
+        self.assertEqual(self.s1_list[0].__str__(), Square.load_from_file()[0].__str__())
+
     def tearDown(self):
         """ Method that execute before other methods. """
         try:
-            os.remove("Rectangle.json")
+            os.remove("Square.json")
         except:
             pass
