@@ -75,7 +75,7 @@ class TestRectangle(unittest.TestCase):
         self.assertEqual(str(self.r2), "[Rectangle] (5) 3/4 - 1/2")
 
     """ Method testing: display """
-    def test_update(self):
+    def test_display(self):
         output = "#\n"
         with patch("sys.stdout", new=StringIO()) as out:
             self.r1.display()
