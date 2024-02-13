@@ -21,6 +21,8 @@ class TestSquare(unittest.TestCase):
         self.s3 = Square(1, 2, 3)
         self.s4 = Square(1, 2, 3, 4)
 
+        self.new_dictionary = {"x": 1, "y": 1, "id": 1, "size": 1}
+
     def test_square(self):
         self.assertEqual(self.s1.size, 1)
         self.assertEqual(self.s2.x, 2)
@@ -59,3 +61,8 @@ class TestSquare(unittest.TestCase):
     def test_update(self):
         self.s4.update(2, 3, 4, 5)
         self.assertEqual(str(self.s4), "[Square] (2) 4/5 - 3")
+
+    """ Method testing: create """
+    def test_create(self):
+        new_instance = Square.create(**self.new_dictionary)
+        self.assertEqual(str(new_instance), "[Square] (1) 1/1 - 1")
