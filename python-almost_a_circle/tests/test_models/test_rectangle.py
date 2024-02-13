@@ -25,9 +25,9 @@ class TestRectangle(unittest.TestCase):
 
     def test_rectangle(self):
         # Only height and width initialization
-        r1 = Rectangle(1, 1)
+        r1 = Rectangle(1, 2)
         self.assertEqual(r1.width, 1)
-        self.assertEqual(r1.height, 1)
+        self.assertEqual(r1.height, 2)
 
         # Initalization of all attributes
         r2 = Rectangle(1, 2, 3, 4, 5)
