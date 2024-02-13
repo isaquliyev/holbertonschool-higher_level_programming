@@ -65,12 +65,15 @@ class TestRectangle(unittest.TestCase):
         with self.assertRaises(ValueError):
             Rectangle(10, 11, 12, -13)
 
-        """ Area function testing """
+    def test_area(self):
+        """ Method testing: area() """
         self.assertEqual(self.r2.area(), 2)
 
+    def test_str(self):
         """ __str__ function testing """
         self.assertEqual(str(self.r2), "[Rectangle] (5) 3/4 - 1/2")
 
+    def test_display(self):
         """ Display Testing """
         output = "#\n"
         with patch("sys.stdout", new=StringIO()) as out:
@@ -82,13 +85,37 @@ class TestRectangle(unittest.TestCase):
             self.r3.display()
             self.assertEqual(out.getvalue(), output)
 
+    def test_to_dictionary(self):
         """ Method testing: to_dictionary """
         self.assertEqual(self.r2.to_dictionary(), {"id": 5, "width": 1, "height": 2, "x": 3, "y": 4})
 
+    def test_update(self):
         """ Method testing: update """
         self.r1.update(1, 2, 3, 4, 5)
         self.assertEqual(str(self.r1), "[Rectangle] (1) 4/5 - 2/3")
 
+    def test_create(self):
         """ Method testing: create """
         new_instance = Rectangle.create(**self.new_dictionary)
         self.assertEqual(str(new_instance), "[Rectangle] (1) 1/1 - 1/1")
+
+    def test_save_to_file(self):
+        """ Method testing: save_to_file"""
+        Rectangle.save_to_file(None)
+        with open("Rectangle.json", "r") as f:
+            self.assertEqual(f.read(), "[]")
+
+        Rectangle.save_to_file([])
+        with open("Rectangle.json", "r") as f:
+            self.assertEqual(f.read(), "[]")
+
+        Rectangle.save_to_file([Rectangle(1, 2, id=13)])
+        with open("Rectangle.json", "r") as file:
+            self.assertEqual(f.read(), '[{"id": 13, "width": 1, "height": 2, "x": 0, "y": 0}]')
+
+    def tearDown(self):
+        """ Method that execute before other methods. """
+        try:
+            os.remove("Rectangle.json")
+        except:
+            pass
