@@ -73,3 +73,8 @@ class TestBase(unittest.TestCase):
         with patch("sys.stdout", new=StringIO()) as out:
             r5.display()
             self.assertEqual(out.getvalue(), output)
+        r6 = Rectangle(1, 1, 1, 1, 1)
+        output = "\n #\n"
+        with patch("sys.stdout", new=StringIO()) as out:
+            r6.display()
+            self.assertEqual(out.getvalue(), output)
