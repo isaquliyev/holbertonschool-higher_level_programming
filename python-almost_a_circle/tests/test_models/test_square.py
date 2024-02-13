@@ -50,3 +50,12 @@ class TestSquare(unittest.TestCase):
     """ Method testing: __str__ """
     def test_str(self):
         self.assertEqual(str(self.s4), "[Square] (4) 2/3 - 1")
+
+    """ Method testing: to_dictionary """
+    def  test_to_dictionary(self):
+        self.assertEqual(self.s4.to_dictionary(), {"id": 4, "size": 1, "x": 2, "y": 3})
+
+    """ Method testing: update """
+    def test_update(self):
+        self.s4.update(2, 3, 4, 5)
+        self.assertEqual(str(self.s4), "[Square] (2) 4/5 - 3")
