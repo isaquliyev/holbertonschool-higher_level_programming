@@ -25,15 +25,17 @@ class TestRectangle(unittest.TestCase):
 
     def test_rectangle(self):
         # Only height and width initialization
-        self.assertEqual(self.r1.width, 1)
-        self.assertEqual(self.r1.height, 1)
+        r1 = Rectangle(1, 1)
+        self.assertEqual(r1.width, 1)
+        self.assertEqual(r1.height, 1)
 
         # Initalization of all attributes
-        self.assertEqual(self.r2.width, 1)
-        self.assertEqual(self.r2.height, 2)
-        self.assertEqual(self.r2.x, 3)
-        self.assertEqual(self.r2.y, 4)
-        self.assertEqual(self.r2.id, 5)
+        r2 = Rectangle(1, 2, 3, 4, 5)
+        self.assertEqual(r2.width, 1)
+        self.assertEqual(r2.height, 2)
+        self.assertEqual(r2.x, 3)
+        self.assertEqual(r2.y, 4)
+        self.assertEqual(r2.id, 5)
 
         # Type error cases
         with self.assertRaises(TypeError):
