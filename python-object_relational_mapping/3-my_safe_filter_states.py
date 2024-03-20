@@ -23,7 +23,7 @@ if __name__ == "__main__":
     cur = conn.cursor()
     cur.execute("""
                     SELECT * FROM states
-                    WHERE name = "Arizona"
+                    WHERE name = "{}"
                     ORDER BY id ASC
                 """.format(name))
     query_rows = cur.fetchall()
