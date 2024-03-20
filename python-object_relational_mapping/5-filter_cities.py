@@ -27,10 +27,9 @@ if __name__ == "__main__":
                     GROUP BY cities.name
                 """.format(name))
     query_rows = cur.fetchall()
+    result = ""
     for i in range(len(query_rows)):
-        if i != len(query_rows) - 1:
-            print(query_rows[i][0], end=', ')
-        else:
-            print(query_rows[i][0])
+        result += query_rows[i][0] + ", "
+    print(result[:-2])
     cur.close()
     conn.close()
