@@ -4,16 +4,15 @@
 """
 from sqlalchemy import Column, Integer, String
 from sqlalchemy.ext.declarative import declarative_base
-from sys import argv
-import MySQLdb
+
+
 Base = declarative_base()
-
-
 class State(Base):
+    """
+        States Table for hbtn_0d_usa Database
+    """
+
     __tablename__ = 'states'
-    id = Column(Integer, unique=True, autoincrement=True,
+    id = Column(Integer, autoincrement=True,
                 primary_key=True, nullable=False)
     name = Column(String(128), nullable=False)
-
-    MySQLdb.connect(host="localhost",
-                    port=3306,)
