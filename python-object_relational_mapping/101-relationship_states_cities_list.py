@@ -20,12 +20,17 @@ if __name__ == "__main__":
 
     Session = sessionmaker(bind=engine)
     session = Session()
-    cities = session.query(City).order_by(City.id).all()
-    states = session.query(State).order_by(State.id).all()
+    cities = session.query(City, State.name.label('state'))\
+                    .join(State, City.state_id == State.id).all()
 
-    for state in states:
-        print("{}: {}".format(state.id, state.name))
-        for city in cities:
-            if city.state_id == state.id:
-                print("    {}: {}".format(city.id, city.name))
+    i = 0
+    while i < len(cities):
+        try:
+            current_state = cities[i][1]
+            print("{}: {}".format(cities[i][0].state_id, current_state))
+            while cities[i][1] == current_state:
+                print("    {}: {}".format(cities[i][0].id, cities[i][0].name))
+                i += 1
+        except Exception:
+            break
     session.close()
