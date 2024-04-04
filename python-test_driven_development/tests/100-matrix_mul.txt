@@ -1,0 +1,38 @@
+=======================================
+The ``6. Matrix multiplication`` module
+=======================================
+
+
+>>> matrix_mul = __import__('100-matrix_mul').matrix_mul
+
+
+>>> matrix_mul([[1, 2], [3, 4]], [[1, 2], [3, 4]])
+[[7, 10], [15, 22]]
+
+
+>>> matrix_mul([[1, 2]], [[3, 4], [5, 6]])
+[[13, 16]]
+
+
+>>> matrix_mul("Isa", [[99], [99]])
+Traceback (most recent call last):
+	...
+TypeError: m_a must be a list
+
+
+>>> matrix_mul([[99], [99]], "Isa")
+Traceback (most recent call last):
+	...
+TypeError: m_b must be a list
+
+
+>>> matrix_mul([1, 2, "Arzu"], [[1, 2], [3, 4]])
+Traceback (most recent call last):
+	...
+TypeError: m_a must be a list of lists
+
+
+>>> matrix_mul([[1, 2], [3, 4]], [1, 2, "Arzu"])
+Traceback (most recent call last):
+	...
+TypeError: m_b must be a list of lists
