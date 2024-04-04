@@ -9,14 +9,14 @@ def matrix_mul(m_a, m_b):
         Method that multiplies two matrixes
     """
 
-    if type(m_a) != list:
+    if isinstance(m_a, list):
         raise TypeError("m_a must be a list")
-    if type(m_b) != list:
+    if isinstance(m_b, list):
         raise TypeError("m_b must be a list")
 
-    if not all(type(row) == list for row in m_a):
+    if not all(isinstance(row, list) for row in m_a):
         raise TypeError("m_a must be a list of lists")
-    if not all(type(row) == list for row in m_b):
+    if not all(isinstance(row, list) for row in m_b):
         raise TypeError("m_b must be a list of lists")
 
     if not m_a or any(not row for row in m_a):
